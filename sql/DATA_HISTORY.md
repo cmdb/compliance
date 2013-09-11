@@ -1,5 +1,5 @@
-HOW TO HANDLE HISTORY
-=====================
+How to handle history of stuff
+==============================
 
 Plusieurs méthodes envisageables :
 
