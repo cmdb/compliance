@@ -1,28 +1,30 @@
-DATA INSERTION HOWTO
-====================
+# Data insertion HOWTO
 
 How to add data... From scratch !
 
-# city
+`@data=...` means a foreign key reference to another table named _data_
+
+##### city
+
 	ex :
 		name='Paris'
 
-# site
+##### site
 	ex :
 		name='Mon site principal'
 		@city='Paris'
 
-# vendor
+##### vendor
 	ex :
 		name='IBM'
 
-# osarch
+##### osarch
 	ex :
 		name='i386'
 		name='i686'
 		name='x86_64'
 
-# os
+##### os
 	ex :
 		@vendor='Microsoft'
 		@vendor='Red Hat'
@@ -34,7 +36,7 @@ How to add data... From scratch !
 		version='2008 R2'
 		version='5.3'
 
-# cpu
+##### cpu
 	ex :
 		@vendor='Intel'
 		name='Xeon CPU E5-2660'
@@ -43,18 +45,18 @@ How to add data... From scratch !
 		htfactor='2'
 		frequency='2.20'
 
-# model
+##### model
 	ex :
 		name='ProLiant BL460c Gen8'
 
-# environment
+##### environment
 	ex :
 		name='Test'
 		name='Intégration'
 		name='Recette'
 		name='Production'
 
-# machine
+##### machine
 	ex :
 		@vendor='HP'
 		name='shortname'
