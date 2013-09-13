@@ -18,7 +18,7 @@ référence)
 Dans ce cas, une table machinehistory sera créée.
 	- Création d'une machine :
 		insertion des données à la fois dans la table machine et aussi dans la
-		table machinehistory. -> On a la naissance de la machine dans la table
+		table machinehistory. On a la naissance de la machine dans la table
 		machinehistory et son état actuel dans la table machine.
 	- Modification d'une machine :
 		- Modifier la ligne de la table machine
