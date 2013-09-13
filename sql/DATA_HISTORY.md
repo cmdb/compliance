@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 # HOW TO HANDLE HISTORY
-=======
-How to handle history of stuff
-==============================
->>>>>>> e93f91cae27d7ff30929634e89d3145d6b409264
 
 Plusieurs méthodes envisageables :
 
 1. la table machine contient plusieurs lignes pour une même machine (même uuid)
-<<<<<<< HEAD
 Dans ce cas, l'historique des changements d'une machine est visible en
 listant toutes les lignes ayant le même uuid et en triant par timestamp
 croissant.
@@ -35,6 +29,3 @@ Dans ce cas, une table machinehistory sera créée.
 		  suppression de la machine.
 		- Déplacer la ligne de la table machine vers machinehistory. Le dernier
 		enregistrement correspond alors à la date de suppression de la machine.
-=======
-2. la table machine contient une ligne unique par machine (son dernier état)
->>>>>>> e93f91cae27d7ff30929634e89d3145d6b409264
