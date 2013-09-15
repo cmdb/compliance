@@ -6,6 +6,11 @@ Plusieurs méthodes envisageables :
 Dans ce cas, l'historique des changements d'une machine est visible en
 listant toutes les lignes ayant le même uuid et en triant par timestamp
 croissant.
+	- Avantages :
+		- une seule table ?
+	- Inconvénients :
+		- la fin de vie d'une machine n'est pas visible
+
 	- Création d'une machine :
 		TODO
 	- Modification d'une machine :
@@ -16,6 +21,11 @@ croissant.
 2. la table machine contient une ligne unique par machine (état actuel de
 référence)
 Dans ce cas, une table machinehistory sera créée.
+	- Avantages :
+		- la table machine ne contien QUE les machines "vivantes".
+	- Inconvénients :
+		- suppression d'une machine non visible
+
 	- Création d'une machine :
 		insertion des données à la fois dans la table machine et aussi dans la
 		table machinehistory. On a la naissance de la machine dans la table
