@@ -1,6 +1,7 @@
 # HOW TO HANDLE HISTORY
 
-Plusieurs méthodes envisageables :
+Plusieurs méthodes envisageables ; la méthode _2 tables_ est pour l'instant
+préssentie.
 
 1. la table machine contient plusieurs lignes pour une même machine (même uuid)
 Dans ce cas, l'historique des changements d'une machine est visible en
@@ -12,11 +13,14 @@ croissant.
 		- la fin de vie d'une machine n'est pas visible
 
 	- Création d'une machine :
-		TODO
+		- Insertion des données dans la table machine. Les infos de naissance
+		  d'une machine sont celles de la première ligne.
 	- Modification d'une machine :
-		TODO
+		- Insertion des données modifiées dans une nouvelle ligne avec l'uuid de
+		  la machine correspondante.
 	- Suppression d'une machine :
-		TODO
+		- C'est là que c'est compliqué, on ne peut pas savoir la mort d'une
+		  machine sans avoir un flag spécifique active / inactive...
 
 2. la table machine contient une ligne unique par machine (état actuel de
 référence)
