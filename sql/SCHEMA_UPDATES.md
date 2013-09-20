@@ -27,7 +27,7 @@ or
 `$ mysqladmin drop _DBName_`
 
 ## Create database with the new schema
-`mysql> create database _DBName_`
+`mysql> create database _DBName_`<br/>
 
 or
 
