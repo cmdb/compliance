@@ -7,6 +7,7 @@ or Hot Schema Update in case of minor changes.
 
 ###### Export the schema without data
 `$ mysqldump --compact --no-data _DBName_|sed "s/AUTO_INCREMENT=[0-9]*\s//g" > Schema.sql`
+
 sed is used to remove AUTO_INCREMENT=NN from the schema creation. Otherwise
 table data will begin with a number depending of how many rows were in the
 previous schema export.
