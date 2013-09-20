@@ -21,16 +21,12 @@ By modifying file schema.sql
 
 ## Drop database
 `mysql> drop database _DBName_`
-
 or
-
 `$ mysqladmin drop _DBName_`
 
 ## Create database with the new schema
 `mysql> create database _DBName_`<br/>
-
 or
-
 `$ mysqladmin create _DBName_`
 
 `$ mysql _DBName_ < Schema.sql`
