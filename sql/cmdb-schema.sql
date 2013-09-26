@@ -120,7 +120,7 @@ CREATE TABLE `os` (
   `version` varchar(128) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `name_version` (`name`,`version`),
   KEY `osvendorid_fk` (`vendor`),
   KEY `osarchid_fk` (`arch`),
   CONSTRAINT `osarchid_fk` FOREIGN KEY (`arch`) REFERENCES `osarch` (`id`) ON UPDATE CASCADE,
