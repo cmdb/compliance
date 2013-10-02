@@ -8,8 +8,7 @@ Data should be added in tables order below to avoid missing required data in a
 previous table (foreign key values).
 
 ### city
-ex :
-
+	ex :
 	name='Paris'
 
 ```SQL
@@ -18,14 +17,18 @@ INSERT INTO city (name) VALUES ('Paris');
 
 ### site
 	ex :
-		name='My server room 1'
-		@city='Paris'
-	If the id of 'Paris' is 5 :
-	`INSERT INTO site (city, name) VALUES (5,'My server room 1');`
-	or via a subquery :
-	`INSERT INTO site (city, name) VALUES (
+	name='My server room 1'
+	@city='Paris'
+
+If the id of 'Paris' is 5 :
+
+```SQL
+INSERT INTO site (city, name) VALUES (5,'My server room 1');```
+or via a subquery :
+```SQL
+INSERT INTO site (city, name) VALUES (
 	(select id from city where name='Paris'),
-	'My server room 1');`
+	'My server room 1');```
 
 ### vendor
 	ex :
