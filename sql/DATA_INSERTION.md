@@ -122,7 +122,7 @@ INSERT INTO environment (name) VALUES ('Test');
 	@environment=...
 	@site=...
 
-## Add data from a Comma (,) Separated Values (CSV) file
+## Add data from a CSV file
 _devices.csv_
 
 	uuid,vendor,name,model,serial,cpu,os,environment,site
