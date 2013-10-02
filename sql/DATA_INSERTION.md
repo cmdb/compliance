@@ -10,9 +10,8 @@ previous table (foreign key values).
 ### city
 ex :
 
-  name='Paris'
-
-`INSERT INTO city (name) VALUES ('Paris');`
+	name='Paris'
+	`INSERT INTO city (name) VALUES ('Paris');`
 
 ### site
 	ex :
