@@ -23,12 +23,14 @@ INSERT INTO city (name) VALUES ('Paris');
 If the id of 'Paris' is 5 :
 
 ```SQL
-INSERT INTO site (city, name) VALUES (5,'My server room 1');```
+INSERT INTO site (city, name) VALUES (5,'My server room 1');
+```
 or via a subquery :
 ```SQL
 INSERT INTO site (city, name) VALUES (
 	(select id from city where name='Paris'),
-	'My server room 1');```
+	'My server room 1');
+```
 
 ### vendor
 	ex :
