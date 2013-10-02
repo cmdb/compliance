@@ -11,6 +11,7 @@ previous table (foreign key values).
 ex :
 
 	name='Paris'
+
 	`INSERT INTO city (name) VALUES ('Paris');`
 
 ### site
