@@ -101,6 +101,7 @@ TODO: Add an example in each table description above...
 
 ## Add data from a Comma (,) Separated Values (CSV) file named devices.csv
 like these two lines
+
 	uuid,vendor,name,model,serial,cpu,os,environment,site
 	f7aaffb2-2771-11e3-8fd5-ebc0a12e8020,23,mymachine1,4,1010F,8,10,1,6
 	f7ab0412-2787-11e1-8fd6-53da8578c6f5,23,mymachine2,4,1010P,8,10,1,6
