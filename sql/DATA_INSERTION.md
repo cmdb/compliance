@@ -8,9 +8,9 @@ Data should be added in tables order below to avoid missing required data in a
 previous table (foreign key values).
 
 ### city
-	ex :
-		name='Paris'
-	`INSERT INTO city (name) VALUES ('Paris');`
+ex :
+- name='Paris'
+`INSERT INTO city (name) VALUES ('Paris');`
 
 ### site
 	ex :
