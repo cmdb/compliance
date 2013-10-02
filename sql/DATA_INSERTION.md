@@ -20,7 +20,7 @@ INSERT INTO city (name) VALUES ('Paris');
 	name='My server room 1'
 	@city='Paris'
 
-If the id of 'Paris' is 5 :
+If city.id of 'Paris' is 5 :
 ```SQL
 INSERT INTO site (city, name) VALUES (5,'My server room 1');
 ```
@@ -59,9 +59,27 @@ INSERT INTO osarch (name) VALUES ('powerpc');
 	name='Windows'
 	name='Linux Enterprise Server'
 	name='ESXi'
-	@arch='x86_64'
 	version='2008 R2'
 	version='5.3'
+	@arch='x86_64'
+	@arch='64 Bits'
+
+If vendor.id of 'Microsoft' is 3.
+If osarch.id of 'x86_64' is 5.
+
+```SQL
+INSERT INTO os (vendor, name, version, arch)
+VALUES (3, 'Windows', '2008 R2', 5);
+```
+or via a subquery :
+```SQL
+INSERT INTO os (vendor, name, version, arch)
+VALUES (
+(SELECT id from vendor where name='Microsoft'),
+'Windows',
+'2008 R2',
+(SELECT id from osarch where name='64 Bits'));
+```
 
 ### cpu
 	ex :
