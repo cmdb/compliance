@@ -9,7 +9,8 @@ previous table (foreign key values).
 
 ### city
 ex :
-name='Paris'
+
+  name='Paris'
 
 `INSERT INTO city (name) VALUES ('Paris');`
 
