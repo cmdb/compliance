@@ -12,7 +12,7 @@ previous table (foreign key values).
 	name='Paris'
 
 ```SQL
-INSERT INTO city (name) VALUES ('Paris');
+mysql> INSERT INTO city (name) VALUES ('Paris');
 ```
 
 ### site
@@ -22,11 +22,11 @@ INSERT INTO city (name) VALUES ('Paris');
 
 If city.id of 'Paris' is 5 :
 ```SQL
-INSERT INTO site (city, name) VALUES (5,'My server room 1');
+mysql> INSERT INTO site (city, name) VALUES (5,'My server room 1');
 ```
 or via a subquery :
 ```SQL
-INSERT INTO site (city, name) VALUES (
+mysql> INSERT INTO site (city, name) VALUES (
 	(SELECT id FROM city WHERE name='Paris'),
 	'My server room 1');
 ```
@@ -36,7 +36,7 @@ INSERT INTO site (city, name) VALUES (
 	name='IBM'
 
 ```SQL
-INSERT INTO vendor (name) VALUES ('IBM');
+mysql> INSERT INTO vendor (name) VALUES ('IBM');
 ```
 
 ### osarch
@@ -48,7 +48,7 @@ INSERT INTO vendor (name) VALUES ('IBM');
 	name='powerpc'
 
 ```SQL
-INSERT INTO osarch (name) VALUES ('powerpc');
+mysql> INSERT INTO osarch (name) VALUES ('powerpc');
 ```
 
 ### os
@@ -68,12 +68,12 @@ If vendor.id of 'Microsoft' is 3.
 If osarch.id of 'x86_64' is 5.
 
 ```SQL
-INSERT INTO os (vendor, name, version, arch)
+mysql> INSERT INTO os (vendor, name, version, arch)
 VALUES (3, 'Windows', '2008 R2', 5);
 ```
 or via a subquery :
 ```SQL
-INSERT INTO os (vendor, name, version, arch)
+mysql> INSERT INTO os (vendor, name, version, arch)
 VALUES (
 (SELECT id from vendor where name='Microsoft'),
 'Windows',
@@ -95,7 +95,7 @@ VALUES (
 	name='ProLiant BL460c Gen8'
 
 ```SQL
-INSERT INTO model (name) VALUES ('ProLiant BL460c Gen8');
+mysql> INSERT INTO model (name) VALUES ('ProLiant BL460c Gen8');
 ```
 
 ### environment
@@ -106,7 +106,7 @@ INSERT INTO model (name) VALUES ('ProLiant BL460c Gen8');
 	name='Production'
 
 ```SQL
-INSERT INTO environment (name) VALUES ('Test');
+mysql> INSERT INTO environment (name) VALUES ('Test');
 ```
 
 ### machine
