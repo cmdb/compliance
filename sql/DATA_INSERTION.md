@@ -21,28 +21,35 @@ INSERT INTO city (name) VALUES ('Paris');
 	@city='Paris'
 
 If the id of 'Paris' is 5 :
-
 ```SQL
 INSERT INTO site (city, name) VALUES (5,'My server room 1');
 ```
 or via a subquery :
 ```SQL
 INSERT INTO site (city, name) VALUES (
-	(select id from city where name='Paris'),
+	(SELECT id FROM city WHERE name='Paris'),
 	'My server room 1');
 ```
 
 ### vendor
 	ex :
-		name='IBM'
+	name='IBM'
+
+```SQL
+INSERT INTO vendor (name) VALUES ('IBM');
+```
 
 ### osarch
 	ex :
-		name='i386'
-		name='i686'
-		name='x86_64'
-		name='arm'
-		name='powerpc'
+	name='i386'
+	name='i686'
+	name='x86_64'
+	name='arm'
+	name='powerpc'
+
+```SQL
+INSERT INTO osarch (name) VALUES ('powerpc');
+```
 
 ### os
 	ex :
@@ -93,13 +100,15 @@ INSERT INTO site (city, name) VALUES (
 TODO: Add an example in each table description above... 
 
 ## Add data from a Comma (,) Separated Values (CSV) file named devices.csv
-like this two lines
-`uuid,vendor,name,model,serial,cpu,os,environment,site
-f7aaffb2-2771-11e3-8fd5-ebc0a12e8020,23,mymachine1,4,1010F,8,10,1,6
-f7ab0412-2787-11e1-8fd6-53da8578c6f5,23,mymachine2,4,1010P,8,10,1,6`
+like these two lines
+	uuid,vendor,name,model,serial,cpu,os,environment,site
+	f7aaffb2-2771-11e3-8fd5-ebc0a12e8020,23,mymachine1,4,1010F,8,10,1,6
+	f7ab0412-2787-11e1-8fd6-53da8578c6f5,23,mymachine2,4,1010P,8,10,1,6
 
-`mysql> LOAD DATA INFILE 'devices.csv'
+```SQL
+LOAD DATA INFILE 'devices.csv'
 INTO TABLE machine 
 FIELDS TERMINATED BY ','
 IGNORE 1 LINES
-(uuid,vendor,name,model,serial,cpu,os,environment,site);`
+(uuid,vendor,name,model,serial,cpu,os,environment,site);
+```
