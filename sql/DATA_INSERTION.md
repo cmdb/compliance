@@ -130,7 +130,7 @@ _devices.csv_
 	f7ab0412-2787-11e1-8fd6-53da8578c6f5,23,mymachine2,4,1010P,8,10,1,6
 
 ```SQL
-LOAD DATA INFILE 'devices.csv'
+mysql> LOAD DATA INFILE 'devices.csv'
 INTO TABLE machine 
 FIELDS TERMINATED BY ','
 IGNORE 1 LINES
