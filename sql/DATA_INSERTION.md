@@ -12,7 +12,9 @@ ex :
 
 	name='Paris'
 
-	`INSERT INTO city (name) VALUES ('Paris');`
+```SQL
+INSERT INTO city (name) VALUES ('Paris');
+```
 
 ### site
 	ex :
