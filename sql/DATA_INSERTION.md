@@ -56,29 +56,34 @@ mysql> INSERT INTO osarch (name) VALUES ('powerpc');
 	@vendor='Microsoft'
 	@vendor='Red Hat'
 	@vendor='VMware'
+	@vendor='Debian'
+
 	name='Windows'
-	name='Linux Enterprise Server'
+	name='GNU/Linux'
 	name='ESXi'
+
 	version='2008 R2'
-	version='5.3'
+	version='7.0'
+
 	@arch='x86_64'
 	@arch='64 Bits'
 
-If vendor.id of 'Microsoft' is 3.
+To insert "Debian GNU/Linux 7.0 x86_64" :
+If vendor.id of 'Debian' is 3.
 If osarch.id of 'x86_64' is 5.
 
 ```SQL
 mysql> INSERT INTO os (vendor, name, version, arch)
-VALUES (3, 'Windows', '2008 R2', 5);
+VALUES (3, 'GNU/Linux', '7.0', 5);
 ```
 or via a subquery :
 ```SQL
 mysql> INSERT INTO os (vendor, name, version, arch)
 VALUES (
-(SELECT id from vendor where name='Microsoft'),
-'Windows',
-'2008 R2',
-(SELECT id from osarch where name='64 Bits'));
+(SELECT id from vendor where name='Debian'),
+'GNU/Linux',
+'7.0',
+(SELECT id from osarch where name='x86_64'));
 ```
 
 ### cpu
