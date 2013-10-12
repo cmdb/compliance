@@ -50,6 +50,38 @@ CREATE TABLE `cpu` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `devicehistory` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(64) NOT NULL,
+  `vendor` int(11) unsigned NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `model` int(11) unsigned NOT NULL,
+  `serial` varchar(64) DEFAULT NULL,
+  `cpucount` smallint(5) unsigned DEFAULT NULL,
+  `cpu` int(11) unsigned NOT NULL,
+  `ram` int(10) unsigned DEFAULT NULL,
+  `os` int(11) unsigned DEFAULT NULL,
+  `environment` int(11) unsigned DEFAULT NULL,
+  `site` int(11) unsigned NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid_timestamp` (`uuid`,`timestamp`),
+  KEY `vendorid_fk` (`vendor`),
+  KEY `modelid_fk` (`model`),
+  KEY `siteid_fk` (`site`),
+  KEY `cpuid_fk` (`cpu`),
+  KEY `osid_fk` (`os`),
+  KEY `environmentid_fk` (`environment`),
+  CONSTRAINT `hcpuid_fk` FOREIGN KEY (`cpu`) REFERENCES `cpu` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `henvironmentid_fk` FOREIGN KEY (`environment`) REFERENCES `environment` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `hmodelid_fk` FOREIGN KEY (`model`) REFERENCES `model` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `hosid_fk` FOREIGN KEY (`os`) REFERENCES `os` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `hsiteid_fk` FOREIGN KEY (`site`) REFERENCES `site` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `hvendorid_fk` FOREIGN KEY (`vendor`) REFERENCES `vendor` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `environment` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL DEFAULT '',
