@@ -9,7 +9,7 @@ previous table (foreign key values).
 
 ### city
 	ex :
-	name='Paris'
+		name='Paris'
 
 ```SQL
 mysql> INSERT INTO city (name) VALUES ('Paris');
@@ -33,7 +33,7 @@ mysql> INSERT INTO site (city, name) VALUES (
 
 ### vendor
 	ex :
-	name='IBM'
+		name='IBM'
 
 ```SQL
 mysql> INSERT INTO vendor (name) VALUES ('IBM');
@@ -41,11 +41,11 @@ mysql> INSERT INTO vendor (name) VALUES ('IBM');
 
 ### osarch
 	ex :
-	name='i386'
-	name='i686'
-	name='x86_64'
-	name='arm'
-	name='powerpc'
+		name='i386'
+		name='i686'
+		name='x86_64'
+		name='arm'
+		name='powerpc'
 
 ```SQL
 mysql> INSERT INTO osarch (name) VALUES ('powerpc');
@@ -127,17 +127,29 @@ mysql> INSERT INTO environment (name) VALUES ('Test');
 	@environment=...
 	@site=...
 
-## Add data from a CSV file
-_devices.csv_
+	`insert into machine
+	(vendor,name,model,serial,cpucount,cpu,ram,os,environment,site)
+	values (
+	(select id from vendor where name='HP' limit 1),
+	'shortname',
+	(select id from model where name like 'proliant%460c' limit	1),
+	'xxxxXXXXnnnn',
+	2,
+	(select id from cpu where name='Xeon CPU' limit 1),
+	'192',
+	(select id from os where name='ESXi' limit 1),
+	(select id from environment where name='Production' limit 1),
+	(select id from site where name='My server room 1' limit 1)
+	);`
 
-	uuid,vendor,name,model,serial,cpu,os,environment,site
-	f7aaffb2-2771-11e3-8fd5-ebc0a12e8020,23,mymachine1,4,1010F,8,10,1,6
-	f7ab0412-2787-11e1-8fd6-53da8578c6f5,23,mymachine2,4,1010P,8,10,1,6
+## Add data from a Comma (,) Separated Values (CSV) file named devices.csv
+like these lines
+`uuid,vendor,name,model,serial,cpu,os,environment,site
+f7aaffb2-2771-11e3-8fd5-ebc0a12e8020,23,mymachine1,4,1010F,8,10,1,6
+f7ab0412-2787-11e1-8fd6-53da8578c6f5,23,mymachine2,4,1010P,8,10,1,6`
 
-```SQL
-mysql> LOAD DATA INFILE 'devices.csv'
+`mysql> LOAD DATA INFILE 'devices.csv'
 INTO TABLE machine 
 FIELDS TERMINATED BY ','
 IGNORE 1 LINES
-(uuid,vendor,name,model,serial,cpu,os,environment,site);
-```
+(uuid,vendor,name,model,serial,cpu,os,environment,site);`
