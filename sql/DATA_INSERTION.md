@@ -128,8 +128,9 @@ mysql> INSERT INTO environment (name) VALUES ('Test');
 	@site=...
 
 	`insert into machine
-	(vendor,name,model,serial,cpucount,cpu,ram,os,environment,site)
+	(uuid,vendor,name,model,serial,cpucount,cpu,ram,os,environment,site)
 	values (
+	'3bb47106-3e84-11e3-bb1e-00224d87d9e1',
 	(select id from vendor where name='HP' limit 1),
 	'shortname',
 	(select id from model where name like 'proliant%460c' limit	1),
