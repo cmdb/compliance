@@ -1,14 +1,11 @@
 # HOW TO HANDLE HISTORY
 
 The _device_ table contains one unique line per device (the actual state).  The
-_devicehistory_ table handle devices histor.
-	- Pros :
+_devicehistory_ table handle devices history.
 		- The _device_ table contains only 'living' devices.
-		- Devices end of life is visible : last state of device is keeped in
+		- Devices end of life is visible : last state of device is kept in
 		  _devicehistory_ table and the device is removed from _device_ table
 		  (equals move device row from _device_ to _devicehistory_).
-	- Cons :
-		- ?
 
 	- Device creation :
 	  Data insertion both in the tables _device_ and _devicehistory_. Device
@@ -17,7 +14,34 @@ _devicehistory_ table handle devices histor.
 	  modifications at this time.
 	- Device modification :
 		- Modify _device_ table row.
-		- Copy the modified row from _device_ table ti _devicehistory_.
+		  Ex : suppose you have a server with these data...
+```SQL
+mysql> select id,name,cpucount,ram,timestamp from device where name = 'myserver';
++----+----------+----------+------+---------------------+
+| id | name     | cpucount | ram  | timestamp           |
++----+----------+----------+------+---------------------+
+| 55 | myserver |        2 |   64 | 2010-06-21 14:40:00 |
++----+----------+----------+------+---------------------+
+```
+			- First ensure that data is already in devicehistory with previous data...
+```SQL
+mysql> select id,name,cpucount,ram,timestamp from devicehistory where name = 'myserver';
++----+----------+----------+------+---------------------+
+| id | name     | cpucount | ram  | timestamp           |
++----+----------+----------+------+---------------------+
+| 55 | myserver |        2 |   64 | 2010-06-21 14:40:00 |
++----+----------+----------+------+---------------------+
+```
+		  Looks OK. Today at 12:00 you upgraded this server from 2 to 4 cpus and 64 to 196
+		  GB RAM.
+```SQL
+mysql> update device set cpucount=4,ram=196,timestamp='2013-12-17 23:00' where name = 'myserver';
+```
+		- Copy the modified row from _device_ table to _devicehistory_. The
+		  unique key is id+timestamp so there won't be duplicates
+```SQL
+mysql> insert into devicehistory select * from device where name = 'myserver';
+```
 	- Device suppression (end of life) :
 		- Update _device_ row timestamp with the end of life date.
 		- Move this modified row from _device_ table to _devicehistory_ table.
