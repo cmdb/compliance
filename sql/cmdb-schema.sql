@@ -51,7 +51,7 @@ CREATE TABLE `cpu` (
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `devicehistory` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL,
   `uuid` varchar(64) NOT NULL,
   `vendor` int(11) unsigned NOT NULL,
   `name` varchar(128) NOT NULL,
@@ -64,8 +64,7 @@ CREATE TABLE `devicehistory` (
   `environment` int(11) unsigned DEFAULT NULL,
   `site` int(11) unsigned NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uuid_timestamp` (`uuid`,`timestamp`),
+  UNIQUE KEY `id_timestamp` (`id`,`timestamp`),
   KEY `vendorid_fk` (`vendor`),
   KEY `modelid_fk` (`model`),
   KEY `siteid_fk` (`site`),
@@ -92,7 +91,7 @@ CREATE TABLE `environment` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `machine` (
+CREATE TABLE `device` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) NOT NULL,
   `vendor` int(11) unsigned NOT NULL,
@@ -124,8 +123,8 @@ CREATE TABLE `machine` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `machines` (
-  `machine` tinyint NOT NULL,
+/*!50001 CREATE TABLE `devices` (
+  `device` tinyint NOT NULL,
   `vendor` tinyint NOT NULL,
   `os` tinyint NOT NULL,
   `site` tinyint NOT NULL,
@@ -192,7 +191,7 @@ CREATE TABLE `vendor` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*!50001 DROP TABLE IF EXISTS `machines`*/;
+/*!50001 DROP TABLE IF EXISTS `devices`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -200,8 +199,8 @@ CREATE TABLE `vendor` (
 /*!50001 SET character_set_results     = utf8 */;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `machines` AS select `machine`.`name` AS `machine`,`vendor`.`name` AS `vendor`,`os`.`name` AS `os`,`site`.`name` AS `site`,`machine`.`timestamp` AS `timestamp` from (((`machine` join `vendor` on((`machine`.`vendor` = `vendor`.`id`))) join `site` on((`machine`.`site` = `site`.`id`))) join `os` on((`machine`.`os` = `os`.`id`))) order by `machine`.`name` */;
+/*!50013 DEFINER=`compliance`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `devices` AS select `device`.`name` AS `device`,`vendor`.`name` AS `vendor`,`os`.`name` AS `os`,`site`.`name` AS `site`,`device`.`timestamp` AS `timestamp` from (((`device` join `vendor` on((`device`.`vendor` = `vendor`.`id`))) join `site` on((`device`.`site` = `site`.`id`))) join `os` on((`device`.`os` = `os`.`id`))) order by `device`.`name` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
