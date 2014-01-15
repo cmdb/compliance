@@ -1,6 +1,6 @@
 # DB Schema Updates HOWTO
 
-When DB Schema is Updated. How to export / update / reimport your datas !
+When DB Schema is updated. How to export / update / reimport your datas !
 or Hot Schema Update in case of minor changes.
 
 1. Export / Modify / Reimport
