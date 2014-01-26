@@ -19,6 +19,9 @@ previous schema export.
 ## modify schema
 By modifying file schema.sql
 
+## modify datas if applicable
+By modifying file datas.sql
+
 ## Drop database
 `mysql> drop database _DBName_`<br/>
 or<br/>
