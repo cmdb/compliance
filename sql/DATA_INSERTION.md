@@ -114,7 +114,7 @@ mysql> INSERT INTO model (name) VALUES ('ProLiant BL460c Gen8');
 mysql> INSERT INTO environment (name) VALUES ('Test');
 ```
 
-### machine
+### device
 	ex :
 	@vendor='HP'
 	name='shortname'
@@ -127,7 +127,7 @@ mysql> INSERT INTO environment (name) VALUES ('Test');
 	@environment=...
 	@site=...
 
-	`insert into machine
+	`insert into device
 	(uuid,vendor,name,model,serial,cpucount,cpu,ram,os,environment,site)
 	values (
 	'3bb47106-3e84-11e3-bb1e-00224d87d9e1',
@@ -150,7 +150,7 @@ f7aaffb2-2771-11e3-8fd5-ebc0a12e8020,23,mymachine1,4,1010F,8,10,1,6
 f7ab0412-2787-11e1-8fd6-53da8578c6f5,23,mymachine2,4,1010P,8,10,1,6`
 
 `mysql> LOAD DATA INFILE 'devices.csv'
-INTO TABLE machine 
+INTO TABLE device 
 FIELDS TERMINATED BY ','
 IGNORE 1 LINES
 (uuid,vendor,name,model,serial,cpu,os,environment,site);`
