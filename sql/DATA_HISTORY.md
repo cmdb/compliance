@@ -17,6 +17,8 @@ _devicehistory_ table handle devices history.
 		  Ex : suppose you have a server with these data...
 ```SQL
 mysql> select id,name,cpucount,ram,timestamp from device where name = 'myserver';
+```
+```
 +----+----------+----------+------+---------------------+
 | id | name     | cpucount | ram  | timestamp           |
 +----+----------+----------+------+---------------------+
@@ -26,6 +28,8 @@ mysql> select id,name,cpucount,ram,timestamp from device where name = 'myserver'
 			- First ensure that data is already in devicehistory with previous data...
 ```SQL
 mysql> select id,name,cpucount,ram,timestamp from devicehistory where name = 'myserver';
+```
+```
 +----+----------+----------+------+---------------------+
 | id | name     | cpucount | ram  | timestamp           |
 +----+----------+----------+------+---------------------+
@@ -35,13 +39,26 @@ mysql> select id,name,cpucount,ram,timestamp from devicehistory where name = 'my
 		  Looks OK. Today at 12:00 you upgraded this server from 2 to 4 cpus and 64 to 196
 		  GB RAM.
 ```SQL
-mysql> update device set cpucount=4,ram=196,timestamp='2013-12-17 23:00' where name = 'myserver';
+mysql> update device set cpucount=4,ram=196,timestamp='2013-12-17 12:00:00' where name = 'myserver';
 ```
 		- Copy the modified row from _device_ table to _devicehistory_. The
 		  unique key is id+timestamp so there won't be duplicates
 ```SQL
 mysql> insert into devicehistory select * from device where name = 'myserver';
 ```
+		Verification :
+```SQL
+mysql> select id,name,cpucount,ram,timestamp from devicehistory where name = 'myserver';
+```
+```
++----+----------+----------+------+---------------------+
+| id | name     | cpucount | ram  | timestamp           |
++----+----------+----------+------+---------------------+
+| 55 | myserver |        2 |   64 | 2010-06-21 14:40:00 |
+| 55 | myserver |        4 |  196 | 2013-12-17 12:00:00 |
++----+----------+----------+------+---------------------+
+```
+
 	- Device suppression (end of life) :
 		- Update _device_ row timestamp with the end of life date.
 		- Move this modified row from _device_ table to _devicehistory_ table.
