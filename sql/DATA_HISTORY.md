@@ -2,11 +2,8 @@
 
 The _device_ table contains one unique line per device (the actual state).  The
 _devicehistory_ table handle devices history.
-		- The _device_ table contains only 'living' devices.
-		- Devices end of life is visible : last state of device is kept in
-		  _devicehistory_ table and the device is removed from _device_ table
-		  (equals move device row from _device_ to _devicehistory_).
-
+	- The _device_ table contains only 'living' devices.
+	- Devices end of life is visible : last state of device is kept in _devicehistory_ table and the device is removed from _device_ table (equals move device row from _device_ to _devicehistory_).
 	- Device creation :
 	  Data insertion both in the tables _device_ and _devicehistory_. Device
 	  start of life is in the _devicehistory_ and device actual state in the
