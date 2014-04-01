@@ -102,9 +102,9 @@ Verify
   _devicehistory_ table. the end-of-life date is the last timestamp in the
   _devicehistory_ table.
 
-- Temporary device deactivation
-  For example, you shutdown a device and keep it for a later use, so you remove
-  the name, the os and the environment values.
+## Temporary device deactivation
+For example, you shutdown a device and keep it for a later use, so you remove
+the name, the os and the environment values.
 
 ```SQL
 > update device set name=null, os=null, environment=null, timestamp = 'YYYY-MM-DD hh:mm:ss' where device.name = 'myserver';
