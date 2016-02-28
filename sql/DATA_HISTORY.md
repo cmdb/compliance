@@ -11,7 +11,7 @@ _devicehistory_ table handle devices history.
 ## Device creation
 - Insert data in both tables _device_ and _devicehistory_. Device start of life
   is in the _devicehistory_ and device actual state in the _device_ table. the
-  two lines are the same because there was no modifications at this time.  After
+  two lines are the same because there was no modifications at this time. After
   each creation, devicehistory table MUST be updated with the new created
   device(s) by issuing a insert...select query (this query can be run anytime
   safely !).
