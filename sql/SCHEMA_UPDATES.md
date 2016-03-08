@@ -1,7 +1,7 @@
 # DB Schema Updates
 
-When DB Schema is updated. How to export / update / reimport your datas !
-or Hot Schema Update in case of minor changes.
+When DB Schema (tables structure) is updated, how to export / update / reimport
+your datas or update tables structures directly in case of minor changes.
 
 ## 1. Export / Modify / Reimport
 
@@ -12,6 +12,7 @@ or Hot Schema Update in case of minor changes.
 `sed` is used to remove `AUTO_INCREMENT=NN` from the schema creation. Otherwise
 table data will begin with a number depending of how many rows were in the
 previous schema export.
+
 `--skip-opt` removes the `ON UPDATE CURRENT_TIMESTAMP` so don't use it in our case.
 
 - Export your datas without create statements
@@ -28,14 +29,14 @@ By modifying file datas.sql
 
 - Drop database
 
-`mysql> drop database _DBName_`<br/>
-or<br/>
+`mysql> drop database _DBName_`  
+or  
 `$ mysqladmin drop _DBName_`
 
 - Create database with the new schema
 
-`mysql> create database _DBName_`<br/>
-or<br/>
+`mysql> create database _DBName_`  
+or  
 `$ mysqladmin create _DBName_`
 
 `$ mysql _DBName_ < schema.sql`
